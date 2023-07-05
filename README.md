@@ -2,14 +2,13 @@
 
 ![Password Manager](logo.png)
 
-The Offline My_Password_Man (written in Python for Windows only) is a GUI-based password manager tool that operates offline and can be installed on a USB device to securely store and manage your passwords and sensitive information.
+The Offline My_Password_Man (written in Python for Windows only) is a GUI-based password manager tool that operates offline to securely store and manage your passwords and sensitive information.
 
                                        NOTE: Linux in develop                            
          
 ## Features
 
 - **Offline Operation**: The password manager operates completely offline, ensuring your data remains private and secure.
-- **USB Installation**: The tool can be installed on a USB device, allowing you to carry your password manager with you wherever you go.
 - **Password Management**: Easily add, remove, and reveal stored passwords, providing a convenient way to manage your credentials.
 - **Password Generation**: Generate strong and secure passwords on demand to enhance your online security.
 - **Data Encryption**: All data files are encrypted to ensure the confidentiality of your stored information.
@@ -38,15 +37,7 @@ The Offline My_Password_Man (written in Python for Windows only) is a GUI-based 
 
    ```shell
    python my_pass_manager.py
+4) When wanting to create new user it delete the info of the last user
+NOTE: If you create a user and key, you need to work only with the my_pass_manager.py
    
-## USB Installation 
-1. Clone this repository to your local machine.
-2. Install the required dependencies by running the following command:
-   ```shell
-   cd <repo-path>
-   pip install -r requirements.txt
-   python usb_installation.py
-   cd <USB-path>
-   python First_Time.py
-3. Disconnect the USB device.
-4. From now on, any time you connect the USB device, it will open the manager.
+
