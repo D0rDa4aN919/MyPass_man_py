@@ -1,40 +1,59 @@
-import subprocess,json
-
+import json
+import os.path
+from cryptography.hazmat.primitives import padding, hashes
 
 # ---------------------------- Variables ------------------------------- #
 FONT= ("Arial", 10, "bold")
 BG = "#FFFEC4"
 image_color="#CBFFA9"
 TEXT_BG="white"
-checker = 0
-# ---------------------------- Requirements ------------------------------- #
-
-# if checker == 0:
-#     try:
-#         subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
-#         text = True
-#     except subprocess.CalledProcessError:
-#         text = False
-#     if not text:
-#         print("Error of requirements that did not installed\n Run: pip install -r requirements.txt")
-#         exit()
 
 # ---------------------------- First require information ------------------------------- #
+
+def change_value(file_path, value, hash=None):
+    """
+    change the values of the data files
+    :param file_path: The file path
+    :param value: The value you want to change
+    :param hash: The hash you want to enter.
+    :return:
+    """
+    with open(file_path, "r") as file_obj:
+        lines = file_obj.readlines()
+    with open(file_path, "w") as file_write:
+        for line in lines:
+            if line.startswith(f"{value} = "):
+                if "PASS" == value:
+                    file_write.write(f'{value} = b"{entry_key.get()}"\n')
+                elif "PASSWORD" == value:
+                    file_write.write(f'{value} = "{entry.get()}"\n')
+                elif value == "KEY":
+                    file_write.write(f'{value} = "{entry_key.get()}"\n')
+                elif value == "MD5":
+                    file_write.write(f'{value} = "{hash}"\n')
+            else:
+                file_write.write(line)
+
 def creating_sec():
+    """
+    Create a sing-up window
+    :return:
+    """
     # ---------------------------- Imports ------------------------------- #
     import hashlib
     from tkinter import Button,Entry,Tk, Label, Canvas, PhotoImage
     from tkinter import messagebox
     from cryptography.hazmat.backends import default_backend
     from cryptography.hazmat.primitives.asymmetric import rsa, padding
-    from cryptography.hazmat.primitives import serialization, hashes
+    from cryptography.hazmat.primitives import serialization
+
     global entry, entry_key
+
     def hashing():
         """
         will create the new hash from the password an insert it to the script
         :return:
         """
-
         bytes_value = entry.get().encode('utf-8')
         hash = hashlib.md5(bytes_value).hexdigest()
         change_value(file_path="data.py", value="PASSWORD")
@@ -53,25 +72,17 @@ def creating_sec():
         else:
             messagebox.showerror(title="Error",message="You need at list 12 characters")
 
-    def change_value(file_path, value, hash=None):
-        with open(file_path, "r") as file_obj:
-            lines = file_obj.readlines()
-
-        with open(file_path, "w") as file_write:
-            for line in lines:
-                if line.startswith(f"{value} = "):
-                    if "PASS" == value:
-                        file_write.write(f'{value} = b"{entry_key.get()}"\n')
-                    elif "PASSWORD" == value:
-                        file_write.write(f'{value} = "{entry.get()}"\n')
-                    elif value == "KEY":
-                        file_write.write(f'{value} = "{entry_key.get()}"\n')
-                    elif value == "MD5":
-                        file_write.write(f'{value} = "{hash}"\n')
-                else:
-                    file_write.write(line)
     def keys():
+        """
+        Create new public and private keys and encrypt the text
+        :return:
+        """
         def encrypt_process(plaintext_bytes):
+            """
+            Te encryption process
+            :param plaintext_bytes: The plain text bytes to encrypt
+            :return: The new ciphertext value
+            """
             ciphertext = public_key.encrypt(
                 plaintext_bytes,
                 padding.OAEP(
@@ -83,6 +94,11 @@ def creating_sec():
             return ciphertext
 
         def encrypt(file_path):
+            """
+            Will encrypt the passwords and important variables
+            :param file_path: Path to file
+            :return:
+            """
             if file_path.endswith(".json"):
                 with open(file_path, "rb") as file:
                     plaintext = file.read()
@@ -117,21 +133,16 @@ def creating_sec():
         )
         with open("private_key.pem", "wb") as key_file:
             key_file.write(private_key_pem)
-
         public_key = private_key.public_key()
         with open("public_key.pem", "wb") as key_file:
             key_file.write(public_key.public_bytes(
                 encoding=serialization.Encoding.PEM,
                 format=serialization.PublicFormat.SubjectPublicKeyInfo
             ))
-
         change_value(file_path="data.py", value="KEY")
         change_value(file_path="my_pass_manager.py", value="PASS")
-
-
         with open("public_key.pem", "rb") as key_file:
             public_key_pem = key_file.read()
-
         public_key = serialization.load_pem_public_key(public_key_pem)
         encrypt("data.json")
         encrypt("data.py")
@@ -139,6 +150,7 @@ def creating_sec():
     # ---------------------------- Window ------------------------------- #
     win = Tk()
     win.title("Choose a My-Pass")
+    win.iconbitmap("logo.ico")
     win.config(bg=BG, padx=30, pady=30)
     # ---------------------------- Image ------------------------------- #
 
@@ -168,7 +180,6 @@ def creating_sec():
 
     entry_key = Entry(show="*")
     entry_key.bind("<Return>", check)
-    entry_key.focus()
     entry_key.grid(column=1, row=2, pady=5)
 
     win.mainloop()
