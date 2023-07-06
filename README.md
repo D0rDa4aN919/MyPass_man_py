@@ -1,10 +1,12 @@
-# Offline My_Password_Man
+<h1 align="center">
+  Offline My_Password_Man
+</h1>
+<p align="center">
+  <img src="logo.png" alt="Password Manager">
+</p>
+The Offline My_Password_Man (written in Python for Windows only) is a GUI-based password manager tool that operates offline to securely store and manage your passwords and sensitive information. It can be run on USB for maximum security, by using the autorun function in Windows.                     
 
-![Password Manager](logo.png)
 
-The Offline My_Password_Man (written in Python for Windows only) is a GUI-based password manager tool that operates offline to securely store and manage your passwords and sensitive information.
-
-                                       NOTE: Linux in develop                            
          
 ## Features
 
@@ -24,6 +26,8 @@ The Offline My_Password_Man (written in Python for Windows only) is a GUI-based 
 4. Your data will be encrypted and securely stored within the password manager.
 5. Safely back up your password manager data to ensure no data loss occurs.
 
+
+
 ## Installation
 
 1. Clone this repository to your local machine.
@@ -33,11 +37,14 @@ The Offline My_Password_Man (written in Python for Windows only) is a GUI-based 
    cd <repo-path>
    pip install -r requirements.txt
    python First_Time.py
-3) After that to opening the manager, run this command:
+3) After that to open the manager, run this command:
 
    ```shell
    python my_pass_manager.py
-4) When wanting to create new user it delete the info of the last user
+4) When wanting to create a new user:
+- **Using the same data file**: Decrypt the data files (data.py, data.json) with the private key. Then run the First_Time.py script.
+- **renew the data files**: Remove the old data files (data.py, data.json)
+and download those fresh files. Then run the First_Time.py.
 NOTE: If you create a user and key, you need to work only with the my_pass_manager.py
    
 
