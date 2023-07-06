@@ -21,7 +21,7 @@ EMAIL = "****@gmail.com"
 
 # ---------------------------- Decryption process ------------------------------- #
 
-PASS = b""
+PASS = b"dor"
 
 def decrypt_process(ciphertext_bytes, private_key):
     """
@@ -263,7 +263,7 @@ def change_password():
                 file.write(f'MD5 = "{hash}"\n')
             else:
                 file.write(line)
-    win.destroy()
+    win2.destroy()
 
 # ---------------------------- reset to new password ------------------------------- #
 
@@ -272,26 +272,24 @@ def password_reset():
     Open a windows for changing the password from the script
     :return:
     """
-    global new_pass_entry, win,num
-    win = Tk()
-    win.title("New password")
-    win.iconbitmap("logo.ico")
-    font = ("Arial", 502, "bold")
-    win.option_add("*Font", font)
-    win.iconbitmap("logo.ico")
-    win.resizable(False, False)
-    win.config(bg=BG, pady=20, padx=20, borderwidth=2, relief="raised")
+    global new_pass_entry, win2,num
+    win2 = Tk()
+    win2.title("New password")
+    win2.iconbitmap("logo.ico")
+    win2.iconbitmap("logo.ico")
+    win2.resizable(False, False)
+    win2.config(bg=BG, pady=20, padx=20, borderwidth=2, relief="raised")
     num = 2
-    label_pass = Label(win ,text="Enter the new password:", bg=BG, font=("Arial", 14, "bold"), width=30)
+    label_pass = Label(win2 ,text="Enter the new password:", bg=BG, font=("Arial", 12, "bold"))
     label_pass.grid(column=1, row=0, pady=10)
-    new_pass_gene_butt = Button(win, text="Generate password",command=getting_the_amount, width=30)
+    new_pass_gene_butt = Button(win2, text="Generate password",command=getting_the_amount, width=30)
     new_pass_gene_butt.grid(column=1, row=3,pady=10)
-    new_pass_gene_butt = Button(win, text="Save", command=change_password)
+    new_pass_gene_butt = Button(win2, text="Save", command=change_password , width=30)
     new_pass_gene_butt.grid(column=1, row=2,pady=10)
-    new_pass_entry = Entry(win, width=30)
+    new_pass_entry = Entry(win2, width=30)
     new_pass_gene_butt.focus()
     new_pass_entry.grid(column=1, row=1,pady=10)
-    win.mainloop()
+    win2.mainloop()
 
 # ---------------------------- Password Copy ------------------------------- #
 
