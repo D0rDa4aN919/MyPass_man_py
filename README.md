@@ -6,7 +6,7 @@
 </p>
 The Offline My_Password_Man (written in Python for Windows only) is a GUI-based password manager tool that operates offline to securely store and manage your passwords and sensitive information. It can be run on USB for maximum security, by using the autorun function in Windows.                     
 
-
+![GIF of the tool](./video1.gif)
          
 ## Features
 
