@@ -24,7 +24,7 @@ The Offline My_Password_Man (written in Python for Windows only) is a GUI-based 
 2. Launch the application and set up a master password for authentication.
 3. Use the provided options to add, remove, reveal, or generate passwords.
 4. Your data will be encrypted and securely stored within the password manager.
-5. Safely back up your password manager data to ensure no data loss occurs.
+5. USB option: It can run via USB device using autorun function in Windows.
 
 
 
