@@ -47,4 +47,18 @@ The Offline My_Password_Man (written in Python for Windows only) is a GUI-based 
 and download those fresh files. Then run the First_Time.py.
 NOTE: If you create a user and key, you need to work only with the my_pass_manager.py
    
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+- [D0rDa4aN919](https://github.com/D0rDa4aN919)
+
+## Acknowledgments
+
+![tkinter](https://docs.python.org/3/library/tkinter.html)
+![cryptography](https://cryptography.io/en/latest/)
+![pyperclip](https://pyperclip.readthedocs.io/en/latest/)
+
 
