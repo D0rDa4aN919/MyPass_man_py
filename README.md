@@ -57,8 +57,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-![tkinter](https://docs.python.org/3/library/tkinter.html)
-![cryptography](https://cryptography.io/en/latest/)
-![pyperclip](https://pyperclip.readthedocs.io/en/latest/)
+- tkinter: https://docs.python.org/3/library/tkinter.html
+- cryptography: https://cryptography.io/en/latest/
+- pyperclip: https://pyperclip.readthedocs.io/en/latest/
 
 
